@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div id="app">
+
+        <!-- Home Page (index.html) -->
+        <section id="home-page" class="page">
+            <header>
+                <h1>Welcome to Personal Expense Tracker</h1>
+                <p>Track your expenses and manage your budget effectively.</p>
+            </header>
+            <div class="container">
+                <button onclick="showPage('register-page')">Register</button>
+                <button onclick="showPage('login-page')">Login</button>
+            </div>
+        </section>
+
+        <!-- Registration Page (register.html) -->
+        <section id="register-page" class="page" style="display: none;">
+            <header>
+                <h1>Create an Account</h1>
+            </header>
+            <div class="container">
+                <form id="register-form" onsubmit="return validateRegistration()">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+            <footer>
+                <button onclick="showPage('home-page')">Back to Home</button>
+            </footer>
+        </section>
+
+        <!-- Login Page (login.html) -->
+        <section id="login-page" class="page" style="display: none;">
+            <header>
+                <h1>Login</h1>
+            </header>
+            <div class="container">
+                <form id="login-form" onsubmit="return validateLogin()">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" name="email" required>
+
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="password" required>
+
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            <footer>
+                <button onclick="showPage('home-page')">Back to Home</button>
+            </footer>
+        </section>
+
+        <!-- Expense Tracker Dashboard (tracker.html) -->
+        <section id="tracker-page" class="page" style="display: none;">
+            <header>
+                <h1>Your Expense Tracker</h1>
+                <button onclick="logout()">Logout</button>
+            </header>
+            <div class="container">
+                <section id="expense-form">
+                    <h2>Add New Expense</h2>
+                    <form id="expense-entry-form">
+                        <label for="expense-date">Date:</label>
+                        <input type="date" id="expense-date" name="expense-date" required>
+
+                        <label for="expense-category">Category:</label>
+                        <select id="expense-category" name="expense-category" required>
+                            <option value="">Select Category</option>
+                            <option value="food">Food</option>
+                            <option value="travel">Travel</option>
+                            <option value="bills">Bills</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="others">Others</option>
+                        </select>
+
+                        <label for="expense-amount">Amount:</label>
+                        <input type="number" id="expense-amount" name="expense-amount" placeholder="Amount in USD" required>
+
+                        <button type="submit">Add Expense</button>
+                    </form>
+                </section>
+
+                <section id="expense-summary">
+                    <h2>Expense Summary</h2>
+                    <div id="total-expenses">
+                        <p>Total Expenses: <span id="total-amount">$0.00</span></p>
+                    </div>
+                    <div id="category-summary">
+                        <h3>Category Breakdown</h3>
+                        <ul>
+                            <li>Food: <span id="food-expense">$0.00</span></li>
+                            <li>Travel: <span id="travel-expense">$0.00</span></li>
+                            <li>Bills: <span id="bills-expense">$0.00</span></li>
+                            <li>Entertainment: <span id="entertainment-expense">$0.00</span></li>
+                            <li>Others: <span id="others-expense">$0.00</span></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <footer>
+                <button onclick="showPage('home-page')">Back to Home</button>
+            </footer>
+        </section>
+
+        <!-- Feedback Page (feedback.html) -->
+        <section id="feedback-page" class="page" style="display: none;">
+            <header>
+                <h1>Feedback</h1>
+            </header>
+            <div class="container">
+                <form id="feedback-form" onsubmit="return validateFeedback()">
+                    <label for="feedback-name">Name:</label>
+                    <input type="text" id="feedback-name" name="name" required>
+
+                    <label for="feedback-email">Email:</label>
+                    <input type="email" id="feedback-email" name="email" required>
+
+                    <label for="feedback-message">Feedback Message:</label>
+                    <textarea id="feedback-message" name="message" required></textarea>
+
+                    <button type="submit">Submit Feedback</button>
+                </form>
+            </div>
+            <footer>
+                <button onclick="showPage('home-page')">Back to Home</button>
+            </footer>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
